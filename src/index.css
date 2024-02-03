@@ -1,13 +1,46 @@
-body {
+/* Reset some default styling */
+body,
+h2,
+h3,
+h6,
+ul {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-search,
+.profile,
+.repository-list {
+  width: 80%;
+  margin-bottom: 20px;
+}
+
+.user-search input,
+.user-search button {
+  margin-top: 10px;
+}
+
+.avatar img {
+  width: 150px; /* or whatever size you prefer */
+}
+
+.profile-info h2,
+.profile-info h6 {
+  margin-bottom: 5px; /* Adjust as needed */
+}
+
+.repository-list ul {
+  list-style-type: none;
+}
+
+.repository-list li {
+  border: 1px solid black;
+  padding: 10px;
+  margin-bottom: 10px;
 }
