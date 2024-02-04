@@ -1,46 +1,174 @@
-/* Reset some default styling */
-body,
-h2,
-h3,
-h6,
-ul {
+/* App Styles */
+body {
+  font-family: "Arial", sans-serif;
   margin: 0;
   padding: 0;
+  background-color: #f8f8f8;
 }
 
 .app {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 20px;
 }
 
-.user-search,
-.profile,
-.repository-list {
-  width: 80%;
+/* User Search Styles */
+.user-search {
+  text-align: center;
+  margin-top: 70px;
   margin-bottom: 20px;
+  border: 1px solid black; /* Add this line to add a black border */
+  border-radius: 3px;
+  padding: 10px 10px;
 }
 
-.user-search input,
+.user-search h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.user-search input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
 .user-search button {
-  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: block;
+  margin: 10px auto; /* Add this line to center align the button */
+}
+.user-search button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: block;
+  margin: 10px auto; /* Add this line to center align the button */
+  width: 100%; /* Add this line to make the button take the entire width */
+}
+
+/* Profile Styles */
+.profile {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  padding: 10px;
 }
 
 .avatar img {
-  width: 150px; /* or whatever size you prefer */
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-right: 20px;
 }
 
-.profile-info h2,
-.profile-info h6 {
-  margin-bottom: 5px; /* Adjust as needed */
+.profile-info {
+  text-align: left;
 }
 
-.repository-list ul {
-  list-style-type: none;
-}
-
-.repository-list li {
-  border: 1px solid black;
-  padding: 10px;
+.profile h2 {
+  font-size: 24px;
   margin-bottom: 10px;
+}
+
+.profile h6 {
+  font-style: italic;
+  font-size: 15px;
+  margin: 5px 0;
+}
+
+/* Repository List Styles */
+.repository-list {
+  width: 100%;
+  text-align: center;
+}
+
+.repository-list h2 {
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+.repository-list-ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  justify-content: flex-start;
+  padding: 0;
+  list-style: none;
+  margin: 0;
+}
+
+.repository {
+  width: 300px; /* Adjust the width of each card as needed */
+  margin: 10px;
+  padding: 15px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.repository:hover {
+  background-color: #f0f0f0;
+}
+
+.repository h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.repository p {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.repository h4 {
+  font-size: 14px;
+  color: #555;
+}
+
+.user-search-2 {
+  display: flex;
+  align-items: center;
+}
+
+.user-search-2 img,
+.user-search-2 h3 {
+  display: none;
+}
+
+.user-search-2 input[type="text"],
+.user-search-2 button[type="submit"] {
+  display: inline;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+}
+
+.user-search-2 button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  margin-left: 30px;
+  cursor: pointer;
 }

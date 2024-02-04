@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Octokit } from "octokit";
+import logo from "./assets/logo.svg";
 
 export default function App() {
   const [userDetails, setUserDetails] = useState(null);
   const [query, setQuery] = useState("");
   const [submitClicked, setSubmitClicked] = useState(false);
   const [inputChanged, setInputChanged] = useState(false);
+  const [repos, setRepos] = useState([]);
+  const [initialLoad, setInitialLoad] = useState(true);
 
   useEffect(() => {
     async function fetchData() {
@@ -20,7 +23,6 @@ export default function App() {
           });
           setUserDetails(response.data);
         } catch (error) {
-          // Handle error, e.g., display a message or log it
           console.error("Error fetching user details:", error.message);
           setUserDetails(null);
         } finally {
@@ -33,9 +35,38 @@ export default function App() {
     fetchData();
   }, [submitClicked, inputChanged, query]);
 
+  useEffect(() => {
+    async function fetchRepos() {
+      if (submitClicked && inputChanged && query.trim() !== "") {
+        try {
+          const octokit = new Octokit({});
+          const response = await octokit.request(
+            "GET /users/{username}/repos",
+            {
+              username: query,
+              headers: {
+                "X-GitHub-Api-Version": "2022-11-28",
+              },
+            }
+          );
+          setRepos(response.data);
+        } catch (error) {
+          console.error("Error fetching user details:", error.message);
+          setRepos(null);
+        } finally {
+          setSubmitClicked(false);
+          setInputChanged(false);
+        }
+      }
+    }
+
+    fetchRepos();
+  }, [submitClicked, inputChanged, query]);
+
   const handleSearch = () => {
     if (query.trim() !== "") {
       setSubmitClicked(true);
+      setInitialLoad(false);
     }
   };
 
@@ -50,16 +81,19 @@ export default function App() {
         query={query}
         onSearch={handleSearch}
         onInputChange={handleInputChange}
+        initialLoad={initialLoad}
       />
+
       <Profile userDetails={userDetails} />
-      <RepositoryList />
+      <RepositoryList repos={repos} />
     </div>
   );
 }
 
-function UserSearch({ query, onSearch, onInputChange }) {
+function UserSearch({ query, onSearch, onInputChange, initialLoad }) {
   return (
-    <div className="user-search">
+    <div className={initialLoad ? "user-search" : "user-search-2"}>
+      <img src={logo} alt="null" />
       <h3>Enter GitHub username</h3>
       <input type="text" value={query} onChange={onInputChange} />
       <button onClick={onSearch}>Search</button>
@@ -89,28 +123,25 @@ function Profile({ userDetails }) {
   );
 }
 
-function RepositoryList() {
+function RepositoryList({ repos }) {
   return (
     <div className="repository-list">
-      <h2>Top Repositories</h2>
-      <ul>
-        <Repository />
-        <Repository />
-        <Repository />
+      {repos.length > 0 ? <h2>Public Repositories</h2> : null}
+      <ul className="repository-list-ul">
+        {repos.map((repo) => (
+          <Repository repo={repo} />
+        ))}
       </ul>
     </div>
   );
 }
 
-function Repository() {
+function Repository({ repo }) {
   return (
-    <li className="repository">
-      <h3>Name : Github Explorer</h3>
-      <p>
-        This is a GitHub explorer that helps users to interact with the GitHub
-        API and fetch user details
-      </p>
-      <h4>Languages : Html CSS Javascript</h4>
+    <li className="repository" onClick={repo.owner.html_url}>
+      <h3>{repo.name}</h3>
+      <p>{repo.description}</p>
+      <h4>{repo.language}</h4>
     </li>
   );
 }
