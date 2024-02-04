@@ -1,0 +1,77 @@
+/* User Search Styles */
+.user-search {
+  text-align: center;
+  margin-top: 70px;
+  margin-bottom: 20px;
+  border: 1px solid black; /* Add this line to add a black border */
+  border-radius: 3px;
+  padding: 10px 10px;
+}
+
+.user-search h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.user-search input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.user-search button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: block;
+  margin: 10px auto; /* Add this line to center align the button */
+}
+.user-search button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: block;
+  margin: 10px auto; /* Add this line to center align the button */
+  width: 100%; /* Add this line to make the button take the entire width */
+}
+
+.user-search-2 {
+  display: flex;
+  align-items: center;
+}
+
+.user-search-2 img,
+.user-search-2 h3 {
+  display: none;
+}
+
+.user-search-2 input[type="text"],
+.user-search-2 button[type="submit"] {
+  display: inline;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+}
+
+.user-search-2 button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  margin-left: 30px;
+  cursor: pointer;
+}

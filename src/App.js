@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Octokit } from "octokit";
-import logo from "./assets/logo.svg";
+import UserSearch from "./components/UserSearch";
+import Profile from "./components/Profile";
+import RepositoryList from "./components/RepositoryList";
 
 export default function App() {
   const [userDetails, setUserDetails] = useState(null);
@@ -87,61 +89,5 @@ export default function App() {
       <Profile userDetails={userDetails} />
       <RepositoryList repos={repos} />
     </div>
-  );
-}
-
-function UserSearch({ query, onSearch, onInputChange, initialLoad }) {
-  return (
-    <div className={initialLoad ? "user-search" : "user-search-2"}>
-      <img src={logo} alt="null" />
-      <h3>Enter GitHub username</h3>
-      <input type="text" value={query} onChange={onInputChange} />
-      <button onClick={onSearch}>Search</button>
-    </div>
-  );
-}
-
-function Profile({ userDetails }) {
-  if (!userDetails) {
-    console.log("Userdetails is null"); // or render a loading message
-    return null;
-  }
-
-  const { avatar_url, name, followers, following } = userDetails;
-
-  return (
-    <div className="profile">
-      <div className="avatar">
-        <img src={avatar_url} alt="" />
-      </div>
-      <div className="profile-info">
-        <h2>{name}</h2>
-        <h6>Followers : {followers}</h6>
-        <h6>Following : {following}</h6>
-      </div>
-    </div>
-  );
-}
-
-function RepositoryList({ repos }) {
-  return (
-    <div className="repository-list">
-      {repos.length > 0 ? <h2>Public Repositories</h2> : null}
-      <ul className="repository-list-ul">
-        {repos.map((repo) => (
-          <Repository repo={repo} />
-        ))}
-      </ul>
-    </div>
-  );
-}
-
-function Repository({ repo }) {
-  return (
-    <li className="repository" onClick={repo.owner.html_url}>
-      <h3>{repo.name}</h3>
-      <p>{repo.description}</p>
-      <h4>{repo.language}</h4>
-    </li>
   );
 }

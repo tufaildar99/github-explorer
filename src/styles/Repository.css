@@ -1,0 +1,29 @@
+.repository {
+  width: 300px; /* Adjust the width of each card as needed */
+  margin: 10px;
+  padding: 15px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.repository:hover {
+  background-color: #f0f0f0;
+}
+
+.repository h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.repository p {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.repository h4 {
+  font-size: 14px;
+  color: #555;
+}
